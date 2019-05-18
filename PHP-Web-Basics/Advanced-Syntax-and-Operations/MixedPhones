@@ -1,0 +1,20 @@
+<?php
+
+$phonebook = [];
+$input = readline();
+
+while ($input !== 'Over') {
+    $tokens = explode(' : ', $input);
+
+    if (is_numeric($tokens[0])) {
+        $phonebook[$tokens[1]] = $tokens[0];
+    } else {
+        $phonebook[$tokens[0]] = $tokens[1];
+    }
+
+    $input = readline();
+}
+ksort($phonebook);
+foreach ($phonebook as $name => $number) {
+    printf("%s -> %s\n", $name, $number);
+}
