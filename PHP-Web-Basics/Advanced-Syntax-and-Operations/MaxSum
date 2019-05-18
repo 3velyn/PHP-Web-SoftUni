@@ -1,0 +1,34 @@
+<?php
+
+list($rows, $cols) = explode(' ', readline());
+
+$k = 3;
+$matrix = [];
+$sum = PHP_INT_MIN;
+$maxSubmatrix = [];
+
+for ($i = 0; $i < intval($rows); $i++) {
+    $matrix[$i] = array_map('intval', explode(' ', readline()));
+}
+
+for ($i = 0; $i <= intval($rows) - $k; $i++) {
+    for ($j = 0; $j <= intval($cols) - $k; $j++) {
+        $currSum = 0;
+        $currMatrix = [];
+
+        for ($p = $i; $p < $i + $k; $p++) {
+            for ($q = $j; $q < $j + $k; $q++) {
+                $currSum += $matrix[$p][$q];
+                $currMatrix[$p][$q] = $matrix[$p][$q];
+            }
+        }
+        if ($currSum > $sum) {
+            $sum = $currSum;
+            $maxSubmatrix = $currMatrix;
+        }
+    }
+}
+echo 'Sum = ' . $sum . PHP_EOL;
+foreach ($maxSubmatrix as $submatrix) {
+    echo implode(' ', $submatrix) . PHP_EOL;
+}
