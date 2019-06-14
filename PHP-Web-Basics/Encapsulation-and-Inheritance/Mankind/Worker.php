@@ -23,7 +23,6 @@ class Worker extends Human
     public function __construct(string $firstName, string $lastName, float $weekSalary, float $workHoursPerDay)
     {
         parent::__construct($firstName, $lastName);
-        $this->setLastName($lastName);
         $this->setWeekSalary($weekSalary);
         $this->setWorkHoursPerDay($workHoursPerDay);
     }
@@ -42,9 +41,7 @@ class Worker extends Human
      */
     public function setLastName(string $lastName): void
     {
-        if (!$this->isNameStartsWithCapitalLetter($lastName)) {
-            throw new Exception("Expected upper case letter!Argument: lastName");
-        } elseif (strlen($lastName) <= 3) {
+        if (strlen($lastName) <= 3) {
             throw new Exception("Expected length more than 3 symbols!Argument: lastName");
         }
         $this->lastName = $lastName;
