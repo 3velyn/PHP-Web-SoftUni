@@ -102,7 +102,6 @@ class Box
      */
     private function getSurfaceArea(): float
     {
-        // 2lw + 2lh + 2wh
         $surfaceArea = 2 * $this->getLength() * $this->getWidth() +
             2 * $this->getLength() * $this->getHeight() +
             2 * $this->getWidth() * $this->getHeight();
@@ -114,7 +113,6 @@ class Box
      */
     private function getLateralSurfaceArea(): float
     {
-        // 2lh + 2wh
         $lateralSurfaceArea = 2 * $this->getLength() * $this->getHeight() + 2 * $this->getWidth() * $this->getHeight();
         return $lateralSurfaceArea;
     }
