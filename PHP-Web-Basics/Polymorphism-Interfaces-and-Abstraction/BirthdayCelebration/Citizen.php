@@ -1,22 +1,37 @@
 <?php
 
-class Citizen extends Human implements IdentificationInterface, Birthable
+class Citizen implements IdentificationInterface, Birthable
 {
-    const DEFAULT_INCREASE = 10;
+    /** @var string */
+    private $name;
+
+    /** @var int */
+    private $age;
 
     /** @var string */
     private $id;
 
-    /** @var string */
-    private $birthday;
-
-    public function __construct(string $name, int $age, string $id, string $birthday)
+    public function __construct(string $name, int $age, string $id)
     {
-        parent::__construct($name, $age);
+        $this->setName($name);
+        $this->setAge($age);
         $this->setId($id);
-        $this->setBirthday($birthday);
     }
 
+    private function setId(string $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    private function setAge(int $age): void
+    {
+        $this->age = $age;
+    }
 
     public function setId(string $id): void
     {
@@ -44,10 +59,5 @@ class Citizen extends Human implements IdentificationInterface, Birthable
     public function getBirthday(): string
     {
         return $this->birthday;
-    }
-
-    public function buyFood(): void
-    {
-        $this->food += self::DEFAULT_INCREASE;
     }
 }
