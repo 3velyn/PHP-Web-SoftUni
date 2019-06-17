@@ -2,7 +2,7 @@
 
 namespace BorderControl;
 
-class Citizen implements IdentificationInterface, Birthable
+class Citizen implements IdentificationInterface
 {
     /** @var string */
     private $name;
